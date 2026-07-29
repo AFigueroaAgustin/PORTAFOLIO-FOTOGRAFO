@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agustín Figueroa | Fotografía</title>
+    <meta name="description" content="Fotografía profesional: Actos escolares, fotografía de producto y eventos." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Montserrat:wght@200;400;600&display=swap"
+      rel="stylesheet"
+    />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="nav-container">
+        <a href="#" class="logo-link">
+          <img src="img/logo.png" alt="Logo Agustín Figueroa Fotografía" class="logo-nav" />
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="hero">
+      <h1>Inmortalizando Momentos y Destacando Detalles</h1>
+      <p>Especialista en actos escolares y fotografía de producto.</p>
+    </section>
+
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <div class="perfil-container">
+        <img src="img/perfil.jpg" alt="Foto de Agustín" loading="lazy" />
+        <p>
+          Hola, soy Agustín. Me dedico a la fotografía capturando la emoción de los actos escolares y resaltando la mejor versión de cada artículo a través de la fotografía de producto. Mi objetivo es entregar imágenes nítidas, bien iluminadas y listas para usar.
+        </p>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <h2>Mi Trabajo</h2>
+
+      <div class="filtros">
+        <button data-filter="all" class="activo">Todos</button>
+        <button data-filter="actos">Actos Escolares</button>
+        <button data-filter="producto">Foto Producto</button>
+        <button data-filter="naturaleza">Naturaleza</button>
+      </div>
+
+      <div class="grid-fotos">
+        <img src="img/eventos/actos/acto-01-thumb.webp" data-full="img/eventos/actos/acto-01-full.webp" data-categoria="actos" alt="Acto escolar" loading="lazy" />
+        <img src="img/eventos/actos/acto-02-thumb.webp" data-full="img/eventos/actos/acto-02-full.webp" data-categoria="actos" alt="Acto escolar" loading="lazy" />
+        <img src="img/eventos/actos/acto-03-thumb.webp" data-full="img/eventos/actos/acto-03-full.webp" data-categoria="actos" alt="Acto escolar" loading="lazy" />
+        <img src="img/eventos/actos/acto-04-thumb.webp" data-full="img/eventos/actos/acto-04-full.webp" data-categoria="actos" alt="Acto escolar" loading="lazy" />
+        <img src="img/eventos/actos/acto-05-thumb.webp" data-full="img/eventos/actos/acto-05-full.webp" data-categoria="actos" alt="Acto escolar" loading="lazy" />
+
+        <img src="img/eventos/productos/produc-01-thumb.webp" data-full="img/eventos/productos/produc-01-full.webp" data-categoria="producto" alt="Fotografía de producto" loading="lazy" />
+        <img src="img/eventos/productos/produc-02-thumb.webp" data-full="img/eventos/productos/produc-02-full.webp" data-categoria="producto" alt="Fotografía de producto" loading="lazy" />
+        <img src="img/eventos/productos/produc-03-thumb.webp" data-full="img/eventos/productos/produc-03-full.webp" data-categoria="producto" alt="Fotografía de producto" loading="lazy" />
+        <img src="img/eventos/productos/produc-04-thumb.webp" data-full="img/eventos/productos/produc-04-full.webp" data-categoria="producto" alt="Fotografía de producto" loading="lazy" />
+        <img src="img/eventos/productos/produc-05-thumb.webp" data-full="img/eventos/productos/produc-05-full.webp" data-categoria="producto" alt="Fotografía de producto" loading="lazy" />
+        <img src="img/eventos/productos/produc-06-thumb.webp" data-full="img/eventos/productos/produc-06-full.webp" data-categoria="producto" alt="Fotografía de producto" loading="lazy" />
+
+        <img src="img/eventos/naturaleza/natu-01-thumb.webp" data-full="img/eventos/naturaleza/natu-01-full.webp" data-categoria="naturaleza" alt="Detalle de hojas con gotas de lluvia" loading="lazy">
+        <img src="img/eventos/naturaleza/natu-02-thumb.webp" data-full="img/eventos/naturaleza/natu-02-full.webp" data-categoria="naturaleza" alt="Hojas de palmera bajo la lluvia" loading="lazy">
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Trabajemos juntos</h2>
+
+      <form name="contacto" method="POST" data-netlify="true" class="form-contacto">
+        <input type="hidden" name="form-name" value="contacto" />
+        <input type="text" name="nombre" placeholder="Tu Nombre" required />
+        <input type="email" name="email" placeholder="Tu Email" required />
+        <textarea name="mensaje" placeholder="Contame qué tipo de fotos necesitás..." required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+      </form>
+
+      <a href="https://wa.me/5493853023122?text=Hola%20Agustín!%20Vi%20tu%20portafolio%20de%20fotos" target="_blank" class="btn-whatsapp" aria-label="Contactar por WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+      </a>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Agustín Figueroa Fotografía.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
