@@ -342,29 +342,17 @@ footer {
 ::-webkit-scrollbar-thumb { background: #444; border-radius: 5px; }
 ::-webkit-scrollbar-thumb:hover { background: #666; }
 
-/* =========================================
-   TEXTO GIGANTE DE FONDO (MARCA DE AGUA)
-   ========================================= */
-/* =========================================
-   TEXTO GIGANTE DE FONDO (MARCA DE AGUA CURSIVA)
-   ========================================= */
 body::before {
-  content: "VISUALS"; /* Tu nombre como firma */
+  content: "";
   position: fixed;
-  top: 50%;
-  left: 50%;
-  
-  /* Diagonal un poco más suave (-20 grados) */
-  transform: translate(-50%, -50%) rotate(20deg);
-  
-  font-size: 20vw; /* Un poco más grande porque la cursiva engaña */
-  font-family: 'Train One', system-ui; /* Acá llamamos a la nueva fuente */
-  
-  /* Color blanco con un 4% de opacidad. Sutil y elegante */
-  color: rgba(255, 255, 255, 0.04); 
-  
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Crea los puntitos blancos semitransparentes */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  /* Controla la distancia entre los puntitos */
+  background-size: 25px 25px; 
   z-index: -1;
   pointer-events: none;
-  white-space: nowrap;
-  user-select: none;
 }
