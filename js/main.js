@@ -60,3 +60,20 @@ window.addEventListener('scroll', () => {
 
   ultimoScroll = scrollActual;
 });
+
+// =========================================
+// 4. Boton de WhatsApp: siempre visible; se levanta al llegar al footer
+// =========================================
+const btnWsp = document.querySelector('.btn-whatsapp');
+const pie = document.querySelector('footer');
+
+if (btnWsp && pie && 'IntersectionObserver' in window) {
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      // Si el footer esta a la vista, subimos el boton para no taparlo
+      btnWsp.classList.toggle('subir', entrada.isIntersecting);
+    });
+  }, { threshold: 0 });
+
+  observador.observe(pie);
+}

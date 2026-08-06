@@ -20,8 +20,16 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #1c1c1c 0%, #050505 100%);
-  background-attachment: fixed;
+  position: relative;
+  background-color: #050505;
+  /* Solo al principio de la pagina: resplandor dorado + ovalo de luz (igual que el flyer).
+     Al no ser 'fixed', se van desplazando y desaparecen al hacer scroll. */
+  background-image:
+    radial-gradient(ellipse 70% 520px at 50% 0, rgba(212, 175, 55, 0.14), transparent 72%),
+    radial-gradient(ellipse 120% 900px at 50% 0, #2b2b2b 0%, #141414 45%, rgba(5, 5, 5, 0) 78%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: 50% 0, 50% 0;
+  background-size: 100% 520px, 100% 900px;
   color: var(--color-texto);
   font-family: var(--fuente-texto);
   font-weight: 300;
@@ -38,6 +46,26 @@ h1, h2, h3, strong {
 
 h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 200; }
 h1 strong { color: var(--color-acento); font-weight: 600; }
+
+/* HERO: titulo central mas grande, con la tipografia del flyer */
+#hero { padding: 80px 20px 90px; }
+#hero h1 {
+  font-size: clamp(2.8rem, 6.5vw, 4.6rem);
+  line-height: 1.12;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.hero-script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--color-acento);
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.hero-sub {
+  color: var(--color-texto-secundario);
+  letter-spacing: 1px;
+}
 
 h2 { 
   font-size: 2rem; 
@@ -292,7 +320,14 @@ header.oculto {
   font-size: 24px;
   font-weight: bold;
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-  transition: transform 0.3s;
+  transition: transform 0.3s, bottom 0.3s ease, right 0.3s ease;
+}
+
+/* Al aparecer el footer: se levanta un poco y se alinea con la columna del
+   contenido (mas al centro, no pegado a la barra de scroll). 1000px = ancho del contenido. */
+.btn-whatsapp.subir {
+  bottom: 80px;
+  right: max(30px, calc((100vw - 1000px) / 2));
 }
 
 .btn-whatsapp:hover {
@@ -344,15 +379,12 @@ footer {
 
 body::before {
   content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  /* Crea los puntitos blancos semitransparentes */
-  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
-  /* Controla la distancia entre los puntitos */
-  background-size: 25px 25px; 
+  position: absolute;
+  inset: 0; /* Cubre toda la pagina y se desliza con el scroll (no es fixed) */
+  /* Puntitos en estilo ONDA (patron SVG con filas sinusoidales), en toda la pagina */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%2226%22%20viewBox%3D%220%200%20200%2026%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.11%22%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2213.00%22%20r%3D%221.15%22%2F%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2215.65%22%20r%3D%221.15%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2217.28%22%20r%3D%221.15%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2217.28%22%20r%3D%221.15%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2215.65%22%20r%3D%221.15%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%2213.00%22%20r%3D%221.15%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2210.35%22%20r%3D%221.15%22%2F%3E%3Ccircle%20cx%3D%22140%22%20cy%3D%228.72%22%20r%3D%221.15%22%2F%3E%3Ccircle%20cx%3D%22160%22%20cy%3D%228.72%22%20r%3D%221.15%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%2210.35%22%20r%3D%221.15%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-repeat: repeat;
+  background-size: 200px 26px;
   z-index: -1;
   pointer-events: none;
 }
