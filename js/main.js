@@ -1,24 +1,75 @@
 // =========================================
-// 1. Lógica del Filtro por categoría
+// 0. Mezclar la galeria: en "Todos" se ve de todo un poco (no agrupado por categoria)
 // =========================================
-const botones = document.querySelectorAll('[data-filter]');
+(function mezclarGaleria() {
+  const grid = document.querySelector('.grid-fotos');
+  if (!grid) return;
+  const imgs = Array.from(grid.children); // solo los <img> (los comentarios no cuentan)
+  // Fisher-Yates
+  for (let i = imgs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [imgs[i], imgs[j]] = [imgs[j], imgs[i]];
+  }
+  imgs.forEach(img => grid.appendChild(img)); // reordena el DOM
+})();
+
+// =========================================
+// 1. Filtro en 2 niveles: categorias + subcategorias de "Eventos"
+// =========================================
+// Subcategorias que forman parte de "Eventos". Para sumar (ej. bautismos),
+// agregas el valor aca y ya queda dentro del paraguas Eventos.
+const EVENTOS = ['actos', 'cumpleanos'];
+
+const botonesPrincipal = document.querySelectorAll('#filtros-principal [data-filter]');
+const botonesSub = document.querySelectorAll('#subfiltros-eventos [data-sub]');
+const barraSub = document.getElementById('subfiltros-eventos');
 const fotos = document.querySelectorAll('.grid-fotos img');
 
-botones.forEach(boton => {
+let filtroPrincipal = 'all';
+let filtroSub = 'all';
+
+function aplicarFiltro() {
+  fotos.forEach(foto => {
+    const cat = foto.dataset.categoria;
+    let mostrar;
+    if (filtroPrincipal === 'all') {
+      mostrar = true;
+    } else if (filtroPrincipal === 'eventos') {
+      // Dentro de Eventos: respeta la subcategoria elegida
+      mostrar = EVENTOS.includes(cat) && (filtroSub === 'all' || cat === filtroSub);
+    } else {
+      mostrar = cat === filtroPrincipal;
+    }
+    foto.style.display = mostrar ? 'block' : 'none';
+  });
+}
+
+// Nivel 1
+botonesPrincipal.forEach(boton => {
   boton.addEventListener('click', () => {
-    // Quitar la clase activo de todos los botones
-    botones.forEach(b => b.classList.remove('activo'));
-    // Agregarla solo al botón presionado
+    botonesPrincipal.forEach(b => b.classList.remove('activo'));
     boton.classList.add('activo');
-    
-    // Obtener qué categoría queremos filtrar
-    const filtro = boton.dataset.filter;
-    
-    // Mostrar u ocultar las fotos según corresponda
-    fotos.forEach(foto => {
-      const mostrar = filtro === 'all' || foto.dataset.categoria === filtro;
-      foto.style.display = mostrar ? 'block' : 'none';
-    });
+    filtroPrincipal = boton.dataset.filter;
+    filtroSub = 'all';
+
+    if (filtroPrincipal === 'eventos') {
+      // Mostrar la barra de subcategorias y resetearla en "Todos los eventos"
+      barraSub.hidden = false;
+      botonesSub.forEach(b => b.classList.toggle('activo', b.dataset.sub === 'all'));
+    } else {
+      barraSub.hidden = true;
+    }
+    aplicarFiltro();
+  });
+});
+
+// Nivel 2 (subcategorias de Eventos)
+botonesSub.forEach(boton => {
+  boton.addEventListener('click', () => {
+    botonesSub.forEach(b => b.classList.remove('activo'));
+    boton.classList.add('activo');
+    filtroSub = boton.dataset.sub;
+    aplicarFiltro();
   });
 });
 

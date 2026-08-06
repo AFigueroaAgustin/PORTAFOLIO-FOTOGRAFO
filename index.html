@@ -55,13 +55,20 @@
     <section id="galeria">
       <h2>Mi Trabajo</h2>
 
-      <div class="filtros">
+      <!-- Nivel 1: categorias principales -->
+      <div class="filtros" id="filtros-principal">
         <button data-filter="all" class="activo">Todos</button>
-        <button data-filter="actos">Actos Escolares</button>
-        <button data-filter="festejos">Eventos</button>
+        <button data-filter="eventos">Eventos</button>
         <button data-filter="viajes">Viajes</button>
         <button data-filter="producto">Foto Producto</button>
         <button data-filter="naturaleza">Naturaleza</button>
+      </div>
+
+      <!-- Nivel 2: subcategorias de Eventos (aparece solo al tocar "Eventos") -->
+      <div class="subfiltros" id="subfiltros-eventos" hidden>
+        <button data-sub="all" class="activo">Todos los eventos</button>
+        <button data-sub="actos">Actos Escolares</button>
+        <button data-sub="cumpleanos">Cumpleaños</button>
       </div>
 
       <div class="grid-fotos">
@@ -88,13 +95,17 @@
         <img src="img/eventos/viajes/viaje-12-thumb.webp" data-full="img/eventos/viajes/viaje-12-full.webp" data-categoria="viajes" alt="Viaje" loading="lazy" />
         <!-- Para sumar mas viajes: copia una linea de arriba y cambia el numero. Las fotos van en img/eventos/viajes/ -->
 
-        <!-- ===== EVENTOS (cumpleanos, bautismos, etc.) =====
-             Carpeta de las fotos:  img/eventos/festejos/
-             Cada foto necesita 2 archivos:  festejo-01-thumb.webp  y  festejo-01-full.webp
-             Para mostrar una foto: descomenta su linea (quitale los signos de comentario)
-             y duplica la linea para cada foto nueva cambiando el numero. -->
-        <!-- <img src="img/eventos/festejos/festejo-01-thumb.webp" data-full="img/eventos/festejos/festejo-01-full.webp" data-categoria="festejos" alt="Evento" loading="lazy" /> -->
-        <!-- <img src="img/eventos/festejos/festejo-02-thumb.webp" data-full="img/eventos/festejos/festejo-02-full.webp" data-categoria="festejos" alt="Evento" loading="lazy" /> -->
+        <!-- ===== EVENTOS > CUMPLEAÑOS ===== -->
+        <img src="img/eventos/cumpleanos/cumple-01-thumb.webp" data-full="img/eventos/cumpleanos/cumple-01-full.webp" data-categoria="cumpleanos" alt="Cumpleaños en salón" loading="lazy" />
+        <img src="img/eventos/cumpleanos/cumple-02-thumb.webp" data-full="img/eventos/cumpleanos/cumple-02-full.webp" data-categoria="cumpleanos" alt="Cumpleaños en salón" loading="lazy" />
+        <img src="img/eventos/cumpleanos/cumple-03-thumb.webp" data-full="img/eventos/cumpleanos/cumple-03-full.webp" data-categoria="cumpleanos" alt="Cumpleaños en salón" loading="lazy" />
+        <img src="img/eventos/cumpleanos/cumple-04-thumb.webp" data-full="img/eventos/cumpleanos/cumple-04-full.webp" data-categoria="cumpleanos" alt="Cumpleaños en salón" loading="lazy" />
+        <img src="img/eventos/cumpleanos/cumple-05-thumb.webp" data-full="img/eventos/cumpleanos/cumple-05-full.webp" data-categoria="cumpleanos" alt="Cumpleaños en salón" loading="lazy" />
+        <img src="img/eventos/cumpleanos/cumple-06-thumb.webp" data-full="img/eventos/cumpleanos/cumple-06-full.webp" data-categoria="cumpleanos" alt="Cumpleaños en salón" loading="lazy" />
+        <img src="img/eventos/cumpleanos/cumple-07-thumb.webp" data-full="img/eventos/cumpleanos/cumple-07-full.webp" data-categoria="cumpleanos" alt="Cumpleaños en salón" loading="lazy" />
+        <img src="img/eventos/cumpleanos/cumple-08-thumb.webp" data-full="img/eventos/cumpleanos/cumple-08-full.webp" data-categoria="cumpleanos" alt="Cumpleaños en salón" loading="lazy" />
+        <!-- Para sumar mas cumpleaños: copia una linea de arriba y cambia el numero. Las fotos van en img/eventos/cumpleanos/ -->
+
 
         <img src="img/eventos/productos/produc-01-thumb.webp" data-full="img/eventos/productos/produc-01-full.webp" data-categoria="producto" alt="Fotografía de producto" loading="lazy" />
         <img src="img/eventos/productos/produc-02-thumb.webp" data-full="img/eventos/productos/produc-02-full.webp" data-categoria="producto" alt="Fotografía de producto" loading="lazy" />
