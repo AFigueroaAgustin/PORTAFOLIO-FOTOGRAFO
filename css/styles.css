@@ -416,3 +416,115 @@ body::before {
   z-index: -1;
   pointer-events: none;
 }
+
+/* =========================================
+   ACCESIBILIDAD Y SEGURIDAD RESPONSIVE
+   ========================================= */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden; /* mata cualquier scroll lateral */
+}
+img {
+  max-width: 100%;
+}
+/* Foco visible al navegar con teclado (accesibilidad) */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* =========================================
+   RESPONSIVE - CELULARES
+   iPhone 11 a 14: 375-430px  |  Samsung S21 a S25: 360-384px
+   Objetivo: todo centrado, visible y navegable desde 360px de ancho.
+   ========================================= */
+@media (max-width: 600px) {
+  body {
+    padding-top: 104px; /* compensa el menu fijo (mas compacto en celular) */
+  }
+
+  /* Menu */
+  header {
+    padding: 8px 12px;
+  }
+  .logo-nav {
+    max-width: 168px;
+  }
+  .nav-links {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    padding: 4px 2px;
+  }
+
+  /* Hero: titulo mas chico para que no se corte y quede centrado */
+  #hero {
+    padding: 45px 16px 60px;
+  }
+  #hero h1 {
+    font-size: clamp(1.8rem, 8.5vw, 2.7rem);
+    letter-spacing: 0.5px;
+    line-height: 1.15;
+  }
+  .hero-script {
+    font-size: clamp(1.5rem, 7vw, 2.1rem);
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+  }
+
+  /* Secciones */
+  section {
+    padding: 45px 16px;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin-bottom: 24px;
+  }
+  .perfil-container p {
+    font-size: 1rem;
+  }
+
+  /* Filtros: que envuelvan y queden centrados, con area de toque comoda */
+  .filtros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 4px;
+    margin-bottom: 26px;
+  }
+  .filtros button {
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  .subfiltros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    margin-top: -10px;
+    margin-bottom: 26px;
+  }
+  .subfiltros button {
+    margin: 0;
+    padding: 6px 10px;
+  }
+
+  /* WhatsApp: comodo y siempre del lado derecho en celular */
+  .btn-whatsapp {
+    bottom: 20px;
+    right: 20px;
+  }
+  .btn-whatsapp.subir {
+    bottom: 72px;
+    right: 20px;
+  }
+}
