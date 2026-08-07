@@ -1,0 +1,10 @@
+# Material promocional (flyers) — no forma parte del sitio, no se sube
+FLYERS/
+
+# Archivo original sin usar
+img/chomba negra.png
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
