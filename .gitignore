@@ -1,10 +1,25 @@
 # Material promocional (flyers) — no forma parte del sitio, no se sube
 FLYERS/
+_legacy_backup/
 
 # Archivo original sin usar
+public/img/chomba negra.png
 img/chomba negra.png
+
+# Dependencias y compilación Next.js
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# Variables de entorno
+.env
+.env*.local
 
 # Sistema operativo
 .DS_Store
 Thumbs.db
 desktop.ini
+*.log
+
