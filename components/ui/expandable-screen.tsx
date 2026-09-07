@@ -2,8 +2,7 @@
 
 import * as React from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { X, ChevronLeft, ChevronRight, Maximize2, Camera, Calendar, MapPin } from "lucide-react"
-import { TextureButton } from "./texture-button"
+import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
 export interface PhotoItem {
   id: string
@@ -124,9 +123,9 @@ export function ExpandableScreen({
             </button>
           )}
 
-          {/* Contenedor central de la fotografía */}
+          {/* Contenedor central de la fotografía sin texto debajo */}
           <div
-            className="relative max-w-5xl max-h-[85vh] w-full flex flex-col items-center justify-center"
+            className="relative max-w-6xl max-h-[88vh] w-full flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <motion.div
@@ -135,26 +134,14 @@ export function ExpandableScreen({
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
               transition={{ type: "spring", damping: 30, stiffness: 350 }}
-              className="relative max-h-[75vh] flex items-center justify-center overflow-hidden rounded-lg shadow-2xl border border-white/10"
+              className="relative max-h-[85vh] flex items-center justify-center overflow-hidden rounded-lg shadow-2xl border border-white/10"
             >
               <img
                 src={selectedPhoto.full}
                 alt={selectedPhoto.title}
-                className="max-h-[75vh] w-auto max-w-full object-contain rounded-lg select-none"
+                className="max-h-[85vh] w-auto max-w-full object-contain rounded-lg select-none"
               />
             </motion.div>
-
-            {/* Pie con detalles fotográficos */}
-            <div className="mt-4 text-center max-w-xl">
-              <h3 className="text-lg md:text-xl font-light tracking-wide text-white">
-                {selectedPhoto.title}
-              </h3>
-              {selectedPhoto.description && (
-                <p className="text-sm text-neutral-400 mt-1">
-                  {selectedPhoto.description}
-                </p>
-              )}
-            </div>
           </div>
 
           {/* Flecha Siguiente */}
