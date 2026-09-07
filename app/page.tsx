@@ -165,6 +165,42 @@ const ALL_PHOTOS: PhotoItem[] = [
 
   // VIAJES & PAISAJES
   {
+    id: "viaje-caballo-01",
+    title: "Paseo a Caballo — Saludo Espontáneo",
+    categoria: "viajes",
+    categoriaLabel: "Viajes & Rutas",
+    thumb: "/img/eventos/viajes/viaje-caballo-01-thumb.webp",
+    full: "/img/eventos/viajes/viaje-caballo-01-full.webp",
+    description: "Salida al campo a caballo, alegría espontánea y contacto con la naturaleza.",
+  },
+  {
+    id: "viaje-caballo-02",
+    title: "Paseo a Caballo — Retrato de Campo",
+    categoria: "viajes",
+    categoriaLabel: "Viajes & Rutas",
+    thumb: "/img/eventos/viajes/viaje-caballo-02-thumb.webp",
+    full: "/img/eventos/viajes/viaje-caballo-02-full.webp",
+    description: "Retrato ecuestre con luz natural difusa entre los árboles del monte.",
+  },
+  {
+    id: "viaje-caballo-03",
+    title: "Paseo a Caballo — Travesía Rural",
+    categoria: "viajes",
+    categoriaLabel: "Viajes & Rutas",
+    thumb: "/img/eventos/viajes/viaje-caballo-03-thumb.webp",
+    full: "/img/eventos/viajes/viaje-caballo-03-full.webp",
+    description: "Recorrido y serenidad en la experiencia a caballo.",
+  },
+  {
+    id: "viaje-caballo-04",
+    title: "Tarde en la Casita — Risas en Grupo",
+    categoria: "viajes",
+    categoriaLabel: "Viajes & Niños",
+    thumb: "/img/eventos/viajes/viaje-caballo-04-thumb.webp",
+    full: "/img/eventos/viajes/viaje-caballo-04-full.webp",
+    description: "Sonrisas y juegos compartidos en una escapada inolvidable.",
+  },
+  {
     id: "viaje-01",
     title: "Amanecer en Ruta",
     categoria: "viajes",
@@ -356,7 +392,7 @@ const TABS: TabItem[] = [
   { id: "actos", label: "Actos Escolares & Egresados", count: 6 },
   { id: "sociales", label: "Retratos & Social", count: 1 },
   { id: "producto", label: "Foto Producto & Marcas", count: 6 },
-  { id: "viajes", label: "Viajes & Rutas", count: 12 },
+  { id: "viajes", label: "Viajes & Rutas", count: 16 },
   { id: "naturaleza", label: "Naturaleza", count: 2 },
 ]
 
@@ -395,7 +431,7 @@ const CATEGORY_INFOS: Record<string, CategoryInfo> = {
     id: "viajes",
     label: "Viajes & Rutas — Mirada de Autor",
     description: "Horizontes abiertos, rutas y la inmensidad de los paisajes de Santiago del Estero y Argentina, capturados con alto rango dinámico y luz natural.",
-    count: 12,
+    count: 16,
   },
   naturaleza: {
     id: "naturaleza",
