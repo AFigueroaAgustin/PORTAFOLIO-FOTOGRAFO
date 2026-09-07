@@ -27,8 +27,7 @@ export function DirectionAwareTabs({
     <div
       className={cn(
         "relative flex flex-wrap items-center justify-center gap-1.5 p-2 sm:p-1.5 rounded-2xl sm:rounded-full",
-        "bg-[#121217]/90 backdrop-blur-md border border-white/[0.08]",
-        "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.8)]",
+        "glass-liquid glass-liquid-glow",
         className
       )}
     >

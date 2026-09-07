@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/texture-card"
 import { TextureButton } from "@/components/ui/texture-button"
 import { ExpandableScreen, type PhotoItem } from "@/components/ui/expandable-screen"
+import { LiquidIsland, type CategoryInfo } from "@/components/ui/liquid-island"
 
 const ALL_PHOTOS: PhotoItem[] = [
   // ACTOS ESCOLARES
@@ -151,15 +152,15 @@ const ALL_PHOTOS: PhotoItem[] = [
     description: "Sesión infantil en casa, capturando la inocencia y el brillo en la mirada.",
   },
 
-  // RETRATOS & SOCIALES
+  // RETRATOS & EVENTOS SOCIALES
   {
-    id: "cristina-social-01",
-    title: "Retrato Social & Eventos",
+    id: "cumple-60-familia",
+    title: "Cumpleaños 60 — Tres Generaciones",
     categoria: "sociales",
     categoriaLabel: "Retrato Social",
-    thumb: "/img/eventos/sociales/cristina-retrato-thumb.jpg",
-    full: "/img/eventos/sociales/cristina-retrato-full.jpg",
-    description: "Enfoque selectivo e iluminación cuidada para sesiones personales y sociales.",
+    thumb: "/img/eventos/sociales/cumple-60-familia-thumb.webp",
+    full: "/img/eventos/sociales/cumple-60-familia-full.webp",
+    description: "Festejo de 60 años en familia, tres generaciones y emoción compartida.",
   },
 
   // VIAJES & PAISAJES
@@ -351,13 +352,68 @@ const ALL_PHOTOS: PhotoItem[] = [
 
 const TABS: TabItem[] = [
   { id: "all", label: "Todo el Portafolio", count: ALL_PHOTOS.length },
-  { id: "actos", label: "Actos Escolares", count: 6 },
-  { id: "cumpleanos", label: "Cumpleaños & Niños", count: 7 },
+  { id: "cumpleanos", label: "Cumpleaños & Familia", count: 7 },
+  { id: "actos", label: "Actos Escolares & Egresados", count: 6 },
   { id: "sociales", label: "Retratos & Social", count: 1 },
+  { id: "producto", label: "Foto Producto & Marcas", count: 6 },
   { id: "viajes", label: "Viajes & Rutas", count: 12 },
-  { id: "producto", label: "Foto Producto", count: 6 },
   { id: "naturaleza", label: "Naturaleza", count: 2 },
 ]
+
+const CATEGORY_INFOS: Record<string, CategoryInfo> = {
+  all: {
+    id: "all",
+    label: "Todo el Portafolio",
+    description: "Una cuidada selección editorial de coberturas en Santiago del Estero y el país. Iluminación cuidada, color cinematográfico y nitidez de alta definición. Hacé clic en cualquier fotografía para expandirla a pantalla completa.",
+    count: ALL_PHOTOS.length,
+  },
+  cumpleanos: {
+    id: "cumpleanos",
+    label: "Cumpleaños & Festejos Familiares",
+    description: "Risas espontáneas, miradas sinceras y abrazos familiares sin poses forzadas. Inmortalizando la verdadera emoción de los primeros añitos, hitos familiares y celebraciones únicas.",
+    count: 7,
+  },
+  actos: {
+    id: "actos",
+    label: "Actos Escolares & Egresados",
+    description: "La solemnidad de los abanderados, presentaciones de camperas, actos patrios y colaciones. Cobertura respetuosa, entrega ágil y recuerdos imborrables para familias y colegios.",
+    count: 6,
+  },
+  sociales: {
+    id: "sociales",
+    label: "Retratos & Eventos Sociales",
+    description: "Retratos con peso emocional, aniversarios y festejos familiares en blanco y negro y color. Planos naturales y enfoque en la calidez humana de cada homenajeado.",
+    count: 1,
+  },
+  producto: {
+    id: "producto",
+    label: "Fotografía de Producto & Marcas",
+    description: "Tomas comerciales de catálogo, packaging y gastronomía. Iluminación técnica que resalta materiales, texturas y calidad para elevar las ventas de tu negocio.",
+    count: 6,
+  },
+  viajes: {
+    id: "viajes",
+    label: "Viajes & Rutas — Mirada de Autor",
+    description: "Horizontes abiertos, rutas y la inmensidad de los paisajes de Santiago del Estero y Argentina, capturados con alto rango dinámico y luz natural.",
+    count: 12,
+  },
+  naturaleza: {
+    id: "naturaleza",
+    label: "Naturaleza & Macro",
+    description: "Macro-fotografía, micro-refracciones en gotas de agua y la atmósfera húmeda subtropical del entorno natural.",
+    count: 2,
+  },
+}
+
+const WHATSAPP_CATEGORY_MESSAGES: Record<string, string> = {
+  all: "¡Hola Agustín! Estuve viendo tu portafolio web y me gustaría consultar disponibilidad y presupuesto para una cobertura/sesión.",
+  cumpleanos: "¡Hola Agustín! Estuve viendo tus coberturas de Cumpleaños y Festejos Familiares en tu portafolio. Me encantó el estilo natural y quisiera consultar disponibilidad y tarifas.",
+  actos: "¡Hola Agustín! Estuve viendo la cobertura de Actos Escolares y Egresados en tu portafolio. Me gustaría consultar disponibilidad y cotización para un colegio/curso.",
+  sociales: "¡Hola Agustín! Vi tus retratos y la sesión del cumpleaños de 60 en blanco y negro en la web. Me gustaría consultar para una cobertura familiar/social.",
+  producto: "¡Hola Agustín! Vi tus fotografías de Producto y Marcas. Me gustaría cotizar una sesión comercial para mi negocio/catálogo.",
+  viajes: "¡Hola Agustín! Estuve recorriendo tu portafolio de Viajes y Paisajes. Quisiera hacerte una consulta.",
+  naturaleza: "¡Hola Agustín! Estuve recorriendo tu portafolio y tu trabajo fotográfico. Quisiera hacerte una consulta.",
+}
 
 export default function PortfolioPage() {
   const [selectedCategory, setSelectedCategory] = React.useState("all")
@@ -369,16 +425,17 @@ export default function PortfolioPage() {
     return ALL_PHOTOS.filter((p) => p.categoria === selectedCategory)
   }, [selectedCategory])
 
-  const whatsappMessage = encodeURIComponent(
-    "¡Hola Agustín! Estuve viendo tu portafolio web y me gustaría consultar disponibilidad y cotización para una sesión/evento."
+  // Mensaje de WhatsApp dinámico y contextual según lo que el usuario está mirando
+  const activeWhatsappMessage = encodeURIComponent(
+    WHATSAPP_CATEGORY_MESSAGES[selectedCategory] || WHATSAPP_CATEGORY_MESSAGES.all
   )
-  const whatsappUrl = `https://wa.me/5493853023122?text=${whatsappMessage}`
+  const whatsappUrl = `https://wa.me/5493853023122?text=${activeWhatsappMessage}`
 
   return (
     <main className="relative min-h-screen text-[#ededed] overflow-x-hidden">
       {/* Barra de Navegación Flotante Minimalista */}
       <header className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 md:px-8 pointer-events-none">
-        <nav className="pointer-events-auto max-w-5xl mx-auto flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#101015]/90 backdrop-blur-xl border border-white/[0.1] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]">
+        <nav className="pointer-events-auto max-w-5xl mx-auto flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 rounded-full glass-liquid glass-liquid-glow">
           <a href="#" className="flex items-center gap-2 group shrink-0">
             <img
               src="/img/logo.png"
@@ -474,7 +531,7 @@ export default function PortfolioPage() {
         </div>
 
         {/* Filtro interactivo de Cult UI */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8">
           <DirectionAwareTabs
             tabs={TABS}
             selectedTab={selectedCategory}
@@ -482,7 +539,16 @@ export default function PortfolioPage() {
           />
         </div>
 
-        {/* Cuadrícula Asimétrica Inteligente (No recorta cabezas ni proporciones) */}
+        {/* Liquid Island estilo Dynamic Island (iOS): Descripción general interactiva de la categoría */}
+        <div className="mb-12">
+          <LiquidIsland
+            category={
+              CATEGORY_INFOS[selectedCategory] || CATEGORY_INFOS["all"]
+            }
+          />
+        </div>
+
+        {/* Cuadrícula Fotográfica Pura (Sin textos individuales, foco 100% en la fotografía) */}
         <motion.div
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -499,42 +565,22 @@ export default function PortfolioPage() {
               >
                 <ShiftCard
                   onClick={() => setSelectedPhoto(photo)}
-                  className="h-full flex flex-col group"
+                  className="h-full group cursor-pointer overflow-hidden rounded-2xl border border-white/[0.08] hover:border-accent-gold/40 transition-all duration-300 shadow-lg hover:shadow-[0_15px_35px_rgba(0,0,0,0.8)]"
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#111116]">
                     <img
                       src={photo.thumb}
                       alt={photo.title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 select-none"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c10] via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
-                    {/* Badge de Categoría */}
-                    <div className="absolute top-3 left-3">
-                      <span className="text-[10px] uppercase font-mono tracking-widest px-2.5 py-1 rounded-full bg-[#0c0c10]/90 text-accent-light border border-white/20 shadow-md">
-                        {photo.categoriaLabel}
-                      </span>
-                    </div>
-
-                    {/* Botón flotante de zoom en hover */}
+                    {/* Botón flotante de zoom en hover / tap */}
                     <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="p-2 rounded-full bg-[#0c0c10]/90 text-white flex items-center justify-center border border-white/20 shadow-md">
-                        <ArrowUpRight className="w-4 h-4" />
+                      <span className="p-2.5 rounded-full bg-black/80 text-white flex items-center justify-center border border-white/20 shadow-xl backdrop-blur-md">
+                        <ArrowUpRight className="w-4 h-4 text-accent-gold" />
                       </span>
-                    </div>
-                  </div>
-
-                  <div className="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-base font-normal text-white group-hover:text-accent-gold transition-colors">
-                        {photo.title}
-                      </h3>
-                      {photo.description && (
-                        <p className="text-xs text-neutral-400 mt-1 line-clamp-2 leading-relaxed">
-                          {photo.description}
-                        </p>
-                      )}
                     </div>
                   </div>
                 </ShiftCard>
